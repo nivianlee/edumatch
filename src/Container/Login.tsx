@@ -7,7 +7,7 @@ import {
   addSelectedUser,
   clearSelectedUser,
 } from "../redux/users/actions";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -52,19 +52,21 @@ const defaultProps = {
 
 const Login = (props: Props) => {
   const classes = useStyles();
+  const [isRedirect, setIsRedirect] = useState(false);
   const [isError, setIsError] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
   });
+  if (isRedirect) {
+    return <Redirect to="/" />;
+  }
 
   const handleLogin = () => {
     ApiManager.login(loginDetails)
       .then((response: any) => {
-        console.log(response);
-        const auth_token = {
-          headers: { Authorization: `Token ${response.data.auth_token}` },
-        };
+        props.addUser(response);
+        setIsRedirect(true);
       })
       .catch((err: any) => {
         console.log(err);

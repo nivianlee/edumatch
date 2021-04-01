@@ -25,6 +25,14 @@ export function login(data: any) {
   return axios
     .post(url + "/auth/token/login", data)
     .then(function (response: any) {
-      return response;
+      const config = {
+        headers: { Authorization: `Token ${response.data.auth_token}` },
+      };
+      axios.get(url + "/auth/users/me/", config).then(function (response: any) {
+        return response.data;
+      });
+    })
+    .catch(function (response: any) {
+      console.log("here");
     });
 }
