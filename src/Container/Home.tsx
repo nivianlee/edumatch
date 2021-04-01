@@ -74,7 +74,7 @@ const Home = (props: Props) => {
   };
 
   return (
-    <Grid container direction="row" spacing={4} justify="center">
+    <Grid container direction="row" spacing={10} justify="center">
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Grid container direction="row" justify="space-between">
           <Grid item xs={12} sm={12} md={10} lg={10}>
