@@ -19,6 +19,8 @@ import keyfeatures from "../data/keyfeatures.json";
 import KeyFeatures from "../Component/KeyFeatures";
 import Radio from "@material-ui/core/Radio";
 import TextInput from "../Component/TextInput";
+import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
+import Footer from "../Component/Footer";
 
 const mapStateToProps = (state: RootState) => ({
   todos: state.todos,
@@ -57,6 +59,7 @@ const Home = (props: Props) => {
   const classes = useStyles();
   const [isError, setIsError] = useState(false);
   const [feedbackForm, setFeedbackForm] = useState({
+    department: "",
     subject: "",
     name: "",
     contactEmail: "",
@@ -71,7 +74,7 @@ const Home = (props: Props) => {
   };
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="row" spacing={4} justify="center">
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Grid container direction="row" justify="space-between">
           <Grid item xs={12} sm={12} md={10} lg={10}>
@@ -103,32 +106,36 @@ const Home = (props: Props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
+      <Grid item xs={12} sm={12} md={11} lg={11}>
         <Grid container direction="row">
-          <Grid item xs={6} sm={6} md={6} lg={6}></Grid>
-          <Grid item xs={6} sm={6} md={6} lg={6}>
-            <Grid container direction="column" spacing={4}>
-              <Grid item>
-                <Typography className={classes.iconText}>
-                  <Box {...defaultProps}>Lorem Ipsum</Box>
-                </Typography>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid container direction="row">
+              <Grid item xs={6} sm={6} md={6} lg={6}></Grid>
+              <Grid item xs={6} sm={6} md={6} lg={6}>
+                <Grid container direction="column" spacing={4}>
+                  <Grid item>
+                    <Typography className={classes.iconText}>
+                      <Box {...defaultProps}>Lorem Ipsum</Box>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="h4">Key Features</Typography>
+                  </Grid>
+                  {keyfeatures.data.map((data: any, index: number) => (
+                    <KeyFeatures
+                      index={index}
+                      title={data.title}
+                      description={data.description}
+                    />
+                  ))}
+                </Grid>
               </Grid>
-              <Grid item>
-                <Typography variant="h4">Key Features</Typography>
-              </Grid>
-              {keyfeatures.data.map((data: any, index: number) => (
-                <KeyFeatures
-                  index={index}
-                  title={data.title}
-                  description={data.description}
-                />
-              ))}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Grid container direction="row" spacing={4}>
+      <Grid item xs={12} sm={12} md={11} lg={11}>
+        <Grid container direction="row">
           <Grid item xs={6} sm={6} md={6} lg={6}>
             <Grid container direction="column" spacing={2}>
               <Grid item>
@@ -199,54 +206,101 @@ const Home = (props: Props) => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item>
-                <Grid container direction="row" spacing={2}>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <TextInput
-                      type="string"
-                      placeholder="Subject"
-                      isError={isError}
-                      name="subject"
-                      autoFocus={false}
-                      onChange={handleTextInputChange}
-                    />
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextInput
+                  type="string"
+                  placeholder="Subject"
+                  isError={isError}
+                  name="subject"
+                  autoFocus={false}
+                  multiline={false}
+                  rows={0}
+                  onChange={handleTextInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextInput
+                  type="string"
+                  placeholder="Name"
+                  isError={isError}
+                  name="name"
+                  autoFocus={false}
+                  multiline={false}
+                  rows={0}
+                  onChange={handleTextInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextInput
+                  type="string"
+                  placeholder="name@email.com"
+                  isError={isError}
+                  name="contactEmail"
+                  autoFocus={false}
+                  multiline={false}
+                  rows={0}
+                  onChange={handleTextInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextInput
+                  type="string"
+                  placeholder="Message..."
+                  isError={isError}
+                  name="message"
+                  autoFocus={false}
+                  multiline={true}
+                  rows={2}
+                  onChange={handleTextInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid container direction="row" justify="flex-start">
+                  <Grid item xs={12} sm={12} md={3} lg={3}>
+                    <Button variant="contained" fullWidth disabled>
+                      Choose file
+                    </Button>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                  <Grid item xs={12} sm={12} md={7} lg={7}>
                     <TextInput
                       type="string"
-                      placeholder="Name"
-                      isError={isError}
-                      name="name"
-                      autoFocus={false}
-                      onChange={handleTextInputChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <TextInput
-                      type="string"
-                      placeholder="name@email.com"
-                      isError={isError}
-                      name="contactEmail"
-                      autoFocus={false}
-                      onChange={handleTextInputChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <TextInput
-                      type="string"
-                      placeholder="Message..."
+                      placeholder="No file choosen"
                       isError={isError}
                       name="message"
                       autoFocus={false}
+                      multiline={false}
+                      rows={0}
                       onChange={handleTextInputChange}
                     />
                   </Grid>
+                  <Grid item xs={12} sm={12} md={2} lg={2}>
+                    <Button variant="contained" fullWidth>
+                      Browse
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-              <Grid item></Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid container direction="row" justify="space-between">
+                  <Grid item>
+                    <FormControlLabel
+                      control={<Checkbox checked={false} name="checkedA" />}
+                      label="I agree to terms and conditions"
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" color="primary">
+                      Submit
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item xs={12} sm={12} md={11} lg={11}>
+        <Footer />
       </Grid>
     </Grid>
   );
