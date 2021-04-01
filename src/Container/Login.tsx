@@ -129,6 +129,8 @@ const Login = (props: Props) => {
                           isError={isError}
                           name="email"
                           autoFocus={true}
+                          multiline={false}
+                          rows={0}
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -139,6 +141,8 @@ const Login = (props: Props) => {
                           isError={isError}
                           name="password"
                           autoFocus={false}
+                          multiline={false}
+                          rows={0}
                           onChange={handleTextInputChange}
                         />
                       </Grid>

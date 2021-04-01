@@ -122,6 +122,8 @@ const Signup = (props: Props) => {
                           isError={isError}
                           name="first_name"
                           autoFocus={false}
+                          multiline={false}
+                          rows={0}
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -132,6 +134,8 @@ const Signup = (props: Props) => {
                           isError={isError}
                           name="last_name"
                           autoFocus={false}
+                          multiline={false}
+                          rows={0}
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -146,6 +150,8 @@ const Signup = (props: Props) => {
                           isError={isError}
                           name="email"
                           autoFocus={false}
+                          multiline={false}
+                          rows={0}
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -156,6 +162,8 @@ const Signup = (props: Props) => {
                           isError={isError}
                           name="password"
                           autoFocus={false}
+                          multiline={false}
+                          rows={0}
                           onChange={handleTextInputChange}
                         />
                       </Grid>

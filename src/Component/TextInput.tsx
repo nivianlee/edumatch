@@ -16,11 +16,22 @@ interface Props {
   isError: boolean;
   name: string;
   autoFocus: boolean;
+  multiline: boolean;
+  rows: number;
   onChange: (event: any) => void;
 }
 
 const TextInput = (props: Props) => {
-  const { type, placeholder, isError, name, autoFocus, onChange } = props;
+  const {
+    type,
+    placeholder,
+    isError,
+    name,
+    autoFocus,
+    multiline,
+    rows,
+    onChange,
+  } = props;
 
   let icon = null;
 
@@ -52,6 +63,8 @@ const TextInput = (props: Props) => {
         onChange={onChange}
         size="small"
         autoFocus={autoFocus}
+        multiline={multiline}
+        rows={rows}
         InputProps={{
           endAdornment: icon,
         }}
