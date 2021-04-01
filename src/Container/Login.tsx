@@ -58,20 +58,25 @@ const Login = (props: Props) => {
     email: "",
     password: "",
   });
-  if (isRedirect) {
-    return <Redirect to="/" />;
-  }
 
   const handleLogin = () => {
     ApiManager.login(loginDetails)
       .then((response: any) => {
         props.addUser(response);
-        setIsRedirect(true);
+        handleRedirect();
       })
       .catch((err: any) => {
         console.log(err);
       });
   };
+
+  const handleRedirect = () => {
+    setIsRedirect(true);
+  };
+
+  if (isRedirect) {
+    return <Redirect to="/" />;
+  }
 
   const handleTextInputChange = (event: any) => {
     setLoginDetails({

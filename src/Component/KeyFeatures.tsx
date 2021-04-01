@@ -36,7 +36,7 @@ const KeyFeatures = (props: any) => {
   }
 
   return (
-    <Grid key={index} item xs={12} sm={12} md={12} lg={12}>
+    <Grid item xs={12} sm={12} md={12} lg={12}>
       <Grid
         container
         direction="row"
