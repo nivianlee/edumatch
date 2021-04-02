@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { RootState } from "../redux/store";
 import { addUser, clearUser } from "../redux/users/actions";
-import { Link } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import keyfeatures from "../data/keyfeatures.json";
-import KeyFeatures from "../Component/KeyFeatures";
-import Radio from "@material-ui/core/Radio";
-import TextInput from "../Component/TextInput";
+import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Grid from "@material-ui/core/Grid";
+import Radio from "@material-ui/core/Radio";
+import Typography from "@material-ui/core/Typography";
+import keyfeatures from "../data/keyfeatures.json";
 import Footer from "../Component/Footer";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
-
-function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+import KeyFeatures from "../Component/KeyFeatures";
+import TextInput from "../Component/TextInput";
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user,
@@ -40,10 +33,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#166FFD",
     fontSize: 20,
     fontWeight: "bold",
-  },
-  iconText: {
-    background: "#166FFD",
-    width: 100,
   },
   home1: {
     width: "100%",
