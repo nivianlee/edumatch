@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 32,
     fontWeight: "bold",
   },
+  signup1: {
+    width: "100%",
+  },
 }));
 
 const Signup = (props: Props) => {
@@ -81,7 +84,7 @@ const Signup = (props: Props) => {
   };
 
   return (
-    <Grid container direction="row">
+    <Grid container direction="row" alignItems="center" spacing={4}>
       <Grid item xs={12} sm={12} md={2} lg={2}></Grid>
       <Grid item xs={12} sm={12} md={4} lg={4}>
         <Grid container direction="column" spacing={6}>
@@ -212,6 +215,13 @@ const Signup = (props: Props) => {
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item xs={12} sm={12} md={6} lg={6}>
+        <img
+          className={classes.signup1}
+          src="/signup1.png"
+          alt="Illustration"
+        />
       </Grid>
     </Grid>
   );

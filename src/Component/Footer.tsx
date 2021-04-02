@@ -9,12 +9,12 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 const useStyles = makeStyles((theme) => ({
   homeTitle: {
     marginTop: 0,
-    color: "#0091ea",
+    color: "#166FFD",
     fontSize: 20,
     fontWeight: "bold",
   },
   iconText: {
-    background: "#0091ea",
+    background: "#166FFD",
     width: 100,
   },
 }));
