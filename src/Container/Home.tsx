@@ -46,13 +46,16 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 const useStyles = makeStyles((theme) => ({
   homeTitle: {
     marginTop: 0,
-    color: "#0091ea",
+    color: "#166FFD",
     fontSize: 20,
     fontWeight: "bold",
   },
   iconText: {
-    background: "#0091ea",
+    background: "#166FFD",
     width: 100,
+  },
+  home1: {
+    width: "100%",
   },
 }));
 
@@ -143,7 +146,7 @@ const Home = (props: Props) => {
   };
 
   return (
-    <Grid container direction="row" spacing={10} justify="center">
+    <Grid container direction="row" spacing={4} justify="center">
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Grid container direction="row" justify="space-between">
           <Grid item xs={12} sm={12} md={10} lg={10}>
@@ -157,8 +160,14 @@ const Home = (props: Props) => {
       <Grid item xs={12} sm={12} md={11} lg={11}>
         <Grid container direction="row">
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Grid container direction="row">
-              <Grid item xs={6} sm={6} md={6} lg={6}></Grid>
+            <Grid container direction="row" alignItems="center" spacing={4}>
+              <Grid item xs={6} sm={6} md={6} lg={6}>
+                <img
+                  className={classes.home1}
+                  src="/home1.png"
+                  alt="Architecture"
+                />
+              </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6}>
                 <Grid container direction="column" spacing={4}>
                   <Grid item>

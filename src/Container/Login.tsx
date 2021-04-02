@@ -18,6 +18,7 @@ import CardContent from "@material-ui/core/CardContent";
 import * as ApiManager from "../api/api";
 import TextInput from "../Component/TextInput";
 import SocialMediaSignIn from "../Component/SocialMediaSignIn";
+import Footer from "../Component/Footer";
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user,
@@ -96,8 +97,13 @@ const Login = (props: Props) => {
   };
 
   return (
-    <Grid container direction="row">
-      <Grid item xs={4} sm={4} md={4} lg={4}></Grid>
+    <Grid
+      container
+      direction="row"
+      alignItems="center"
+      justify="center"
+      spacing={4}
+    >
       <Grid item xs={4} sm={4} md={4} lg={4}>
         <Grid
           container
@@ -224,7 +230,9 @@ const Login = (props: Props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={4} sm={4} md={4} lg={4}></Grid>
+      <Grid item xs={12} sm={12} md={11} lg={11}>
+        <Footer />
+      </Grid>
     </Grid>
   );
 };
