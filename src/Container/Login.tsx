@@ -58,17 +58,24 @@ const Login = (props: Props) => {
     email: "",
     password: "",
   });
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleLogin = () => {
-    ApiManager.login(loginDetails)
-      .then((response: any) => {
+    ApiManager.login(loginDetails).then((response: any) => {
+      if (response.status === 400) {
+        setErrorMsg(response.data.non_field_errors[0]);
+        setIsError(true);
+      } else {
         ApiManager.loginAuth(response.auth_token).then((response: any) => {
-          props.addUser(response);
+          setIsError(false);
+          if (response.status === 401) {
+            setErrorMsg("Invalid token. Kindly contact us at +65 6544-3030.");
+          } else {
+            props.addUser(response);
+          }
         });
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      }
+    });
   };
 
   useEffect(() => {
@@ -127,6 +134,11 @@ const Login = (props: Props) => {
                       </Grid>
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Typography variant="h5">Join our community</Typography>
+                      </Grid>
+                      <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="body1" color="error">
+                          {errorMsg}
+                        </Typography>
                       </Grid>
                     </Grid>
                   </Grid>
