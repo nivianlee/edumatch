@@ -17,6 +17,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import * as ApiManager from "../api/api";
 import TextInput from "../Component/TextInput";
+import Footer from "../Component/Footer";
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user,
@@ -84,7 +85,13 @@ const Signup = (props: Props) => {
   };
 
   return (
-    <Grid container direction="row" alignItems="center" spacing={4}>
+    <Grid
+      container
+      direction="row"
+      alignItems="center"
+      justify="center"
+      spacing={4}
+    >
       <Grid item xs={12} sm={12} md={2} lg={2}></Grid>
       <Grid item xs={12} sm={12} md={4} lg={4}>
         <Grid container direction="column" spacing={6}>
@@ -222,6 +229,10 @@ const Signup = (props: Props) => {
           src="/signup1.png"
           alt="Illustration"
         />
+      </Grid>
+
+      <Grid item xs={12} sm={12} md={11} lg={11}>
+        <Footer />
       </Grid>
     </Grid>
   );
