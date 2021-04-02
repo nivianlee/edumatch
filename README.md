@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## AWS Amplify
+
+AWS Amplify URL: https://master.duer5jpine1ze.amplifyapp.com/
 
 ## Available Scripts
 
@@ -21,9 +23,8 @@ You will also see any lint errors in the console.
 5. Create more detailed UI
 6. Create UX from one test case to another
 7. Conduct error handling
-8. Housekeeping
+8. Housekeeping codes
 9. Deployment to AWS
-10. Update README with AWS's Amplify URL
 
 ## Design Method
 
@@ -133,3 +134,6 @@ Used in these files
 
 <img width="1268" alt="13" src="https://user-images.githubusercontent.com/34975891/113427482-ae024b80-9407-11eb-9dac-f4e84199e157.png">
 
+--------------------------------------------------------------------------------------------------------------------------------------
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
