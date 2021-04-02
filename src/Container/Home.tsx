@@ -48,8 +48,10 @@ const defaultProps = {
 const Home = (props: Props) => {
   const classes = useStyles();
   const [isError, setIsError] = useState(false);
+  const [agreeTC, setAgreeTC] = useState(false);
+  const [responseMsg, setResponseMsg] = useState("");
   const [feedbackForm, setFeedbackForm] = useState({
-    department: "",
+    department: "support",
     subject: "",
     name: "",
     contactEmail: "",
@@ -122,6 +124,14 @@ const Home = (props: Props) => {
           </Grid>
         </Grid>
       );
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!agreeTC) {
+      setResponseMsg("Kindly agree to the T&C");
+    } else {
+      setResponseMsg("We will notify you again in 3 to 5 working days");
     }
   };
 
@@ -229,18 +239,52 @@ const Home = (props: Props) => {
                   <Grid item>
                     <FormControlLabel
                       value="end"
-                      control={<Radio color="primary" checked={true} />}
+                      control={
+                        <Radio
+                          color="primary"
+                          name="department"
+                          value="support"
+                          checked={feedbackForm.department === "support"}
+                          onClick={(event: any) =>
+                            setFeedbackForm({
+                              ...feedbackForm,
+                              [event.target.name]: event.target.value,
+                            })
+                          }
+                        />
+                      }
                       label="Support"
                     />
                   </Grid>
                   <Grid item>
                     <FormControlLabel
                       value="end"
-                      control={<Radio color="primary" />}
+                      control={
+                        <Radio
+                          color="primary"
+                          name="department"
+                          value="sales"
+                          checked={feedbackForm.department === "sales"}
+                          onClick={(event: any) =>
+                            setFeedbackForm({
+                              ...feedbackForm,
+                              [event.target.name]: event.target.value,
+                            })
+                          }
+                        />
+                      }
                       label="Sales"
                     />
                   </Grid>
                 </Grid>
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Typography
+                  variant="body1"
+                  color={agreeTC ? "primary" : "error"}
+                >
+                  {responseMsg}
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <TextInput
@@ -325,12 +369,25 @@ const Home = (props: Props) => {
                 <Grid container direction="row" justify="space-between">
                   <Grid item>
                     <FormControlLabel
-                      control={<Checkbox checked={false} name="checkedA" />}
+                      control={
+                        <Checkbox
+                          checked={agreeTC}
+                          name="agreeTC"
+                          onClick={() => {
+                            setAgreeTC(!agreeTC);
+                            setResponseMsg("");
+                          }}
+                        />
+                      }
                       label="I agree to terms and conditions"
                     />
                   </Grid>
                   <Grid item>
-                    <Button variant="contained" color="primary">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleSubmit()}
+                    >
                       Submit
                     </Button>
                   </Grid>
