@@ -9,8 +9,6 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Home from "./Container/Home";
-import TodoList from "./Container/TodoList";
-import Posts from "./Container/Posts";
 import Login from "./Container/Login";
 import Signup from "./Container/Signup";
 import { makeStyles } from "@material-ui/core/styles";
@@ -138,12 +136,6 @@ const App = (props: RouteComponentProps) => {
         <Switch>
           <Route exact path="/">
             <Home />
-          </Route>
-          <Route exact path="/todos">
-            <TodoList />
-          </Route>
-          <Route exact path="/posts">
-            <Posts />
           </Route>
           <Route exact path="/login">
             <Login />
