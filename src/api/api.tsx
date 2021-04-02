@@ -16,9 +16,14 @@ export function getPosts() {
 }
 
 export function createUser(data: any) {
-  return axios.post(url + "/auth/users/", data).then(function (response: any) {
-    return response;
-  });
+  return axios
+    .post(url + "/auth/users/", data)
+    .then(function (response: any) {
+      return response;
+    })
+    .catch((error) => {
+      return error.response;
+    });
 }
 
 export function login(data: any) {
@@ -27,8 +32,8 @@ export function login(data: any) {
     .then(function (response: any) {
       return response.data;
     })
-    .catch(function (response: any) {
-      console.log("here");
+    .catch((error) => {
+      return error.response;
     });
 }
 
@@ -40,5 +45,8 @@ export function loginAuth(token: string) {
     .get(url + "/auth/users/me/", config)
     .then(function (response: any) {
       return response.data;
+    })
+    .catch((error) => {
+      return error.response;
     });
 }

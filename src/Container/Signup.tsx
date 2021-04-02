@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 const Signup = (props: Props) => {
   const classes = useStyles();
   const [isError, setIsError] = useState(false);
+  const [helperText, setHelperText] = useState("");
   const [isRedirect, setIsRedirect] = useState(false);
   const [newUser, setNewUser] = useState({
     first_name: "",
@@ -62,13 +63,14 @@ const Signup = (props: Props) => {
   }
 
   const handleSignup = () => {
-    ApiManager.createUser(newUser)
-      .then((response: any) => {
+    ApiManager.createUser(newUser).then((response: any) => {
+      if (response.status === 400) {
+        setHelperText(response.data.email[0]);
+        setIsError(true);
+      } else {
         setIsRedirect(true);
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      }
+    });
   };
 
   const handleTextInputChange = (event: any) => {
@@ -130,11 +132,12 @@ const Signup = (props: Props) => {
                         <TextInput
                           type="string"
                           placeholder="First Name"
-                          isError={isError}
+                          isError={false}
                           name="first_name"
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -142,11 +145,12 @@ const Signup = (props: Props) => {
                         <TextInput
                           type="string"
                           placeholder="Last Name"
-                          isError={isError}
+                          isError={false}
                           name="last_name"
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -163,6 +167,7 @@ const Signup = (props: Props) => {
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText={helperText}
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -170,11 +175,12 @@ const Signup = (props: Props) => {
                         <TextInput
                           type="password"
                           placeholder="Enter your password"
-                          isError={isError}
+                          isError={false}
                           name="password"
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>

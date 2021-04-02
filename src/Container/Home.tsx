@@ -262,6 +262,7 @@ const Home = (props: Props) => {
                   autoFocus={false}
                   multiline={false}
                   rows={0}
+                  helperText=""
                   onChange={handleTextInputChange}
                 />
               </Grid>
@@ -274,6 +275,7 @@ const Home = (props: Props) => {
                   autoFocus={false}
                   multiline={false}
                   rows={0}
+                  helperText=""
                   onChange={handleTextInputChange}
                 />
               </Grid>
@@ -286,6 +288,7 @@ const Home = (props: Props) => {
                   autoFocus={false}
                   multiline={false}
                   rows={0}
+                  helperText=""
                   onChange={handleTextInputChange}
                 />
               </Grid>
@@ -298,6 +301,7 @@ const Home = (props: Props) => {
                   autoFocus={false}
                   multiline={true}
                   rows={2}
+                  helperText=""
                   onChange={handleTextInputChange}
                 />
               </Grid>
@@ -317,6 +321,7 @@ const Home = (props: Props) => {
                       autoFocus={false}
                       multiline={false}
                       rows={0}
+                      helperText=""
                       onChange={handleTextInputChange}
                     />
                   </Grid>
