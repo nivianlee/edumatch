@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Redirect, Link } from "react-router-dom";
 import { RootState } from "../redux/store";
 import { addUser } from "../redux/users/actions";
-import { Redirect, Link } from "react-router-dom";
-
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import * as ApiManager from "../api/api";
+import Grid from "@material-ui/core/Grid";
 import TextInput from "../Component/TextInput";
-import SocialMediaSignIn from "../Component/SocialMediaSignIn";
+import Typography from "@material-ui/core/Typography";
+import * as ApiManager from "../api/api";
 import Footer from "../Component/Footer";
+import SocialMediaSignIn from "../Component/SocialMediaSignIn";
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user,
@@ -25,33 +23,20 @@ const mapDispatchToProps = {
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 
-const useStyles = makeStyles((theme) => ({
-  homeTitle: {
-    marginTop: 0,
-    color: "#000",
-    fontSize: 32,
-    fontWeight: "bold",
-  },
-}));
-
-const defaultProps = {
-  bgcolor: "background.paper",
-  m: 1,
-  style: { width: 450, height: 40 },
-  borderColor: "#757575",
-  border: 1,
-  borderRadius: "borderRadius",
-};
-
 const Login = (props: Props) => {
-  const classes = useStyles();
   const [isRedirect, setIsRedirect] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    if (Object.keys(props.user.user).length !== 0) {
+      setIsRedirect(true);
+    }
+  }, [props.user.user]);
 
   const handleLogin = () => {
     ApiManager.login(loginDetails).then((response: any) => {
@@ -71,22 +56,16 @@ const Login = (props: Props) => {
     });
   };
 
-  useEffect(() => {
-    if (Object.keys(props.user.user).length !== 0) {
-      setIsRedirect(true);
-    }
-  }, [props.user.user]);
-
-  if (isRedirect) {
-    return <Redirect to="/" />;
-  }
-
   const handleTextInputChange = (event: any) => {
     setLoginDetails({
       ...loginDetails,
       [event.target.name]: event.target.value,
     });
   };
+
+  if (isRedirect) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Grid
@@ -211,13 +190,9 @@ const Login = (props: Props) => {
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Grid container direction="row">
-              <Link to="/">
-                <Typography variant="body1">Privacy Policy</Typography>
-              </Link>
-              <Typography variant="body1">and</Typography>
-              <Link to="/">
-                <Typography variant="body1">Terms of Use</Typography>
-              </Link>
+              <Typography variant="body1">
+                Privacy Policy and Terms of Use
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
