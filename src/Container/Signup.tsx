@@ -7,7 +7,7 @@ import {
   addSelectedUser,
   clearSelectedUser,
 } from "../redux/users/actions";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 const Signup = (props: Props) => {
   const classes = useStyles();
   const [isError, setIsError] = useState(false);
+  const [isRedirect, setIsRedirect] = useState(false);
   const [newUser, setNewUser] = useState({
     first_name: "",
     last_name: "",
@@ -50,10 +51,20 @@ const Signup = (props: Props) => {
     password: "",
   });
 
+  useEffect(() => {
+    if (Object.keys(props.user.user).length !== 0) {
+      setIsRedirect(true);
+    }
+  }, [props.user.user]);
+
+  if (isRedirect) {
+    return <Redirect to="/login" />;
+  }
+
   const handleSignup = () => {
     ApiManager.createUser(newUser)
       .then((response: any) => {
-        console.log(response);
+        setIsRedirect(true);
       })
       .catch((err: any) => {
         console.log(err);

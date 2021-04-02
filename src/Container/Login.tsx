@@ -7,7 +7,7 @@ import {
   addSelectedUser,
   clearSelectedUser,
 } from "../redux/users/actions";
-import { BrowserRouter as Router, Redirect, Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -70,6 +70,12 @@ const Login = (props: Props) => {
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    if (Object.keys(props.user.user).length !== 0) {
+      setIsRedirect(true);
+    }
+  }, [props.user.user]);
 
   if (isRedirect) {
     return <Redirect to="/" />;
