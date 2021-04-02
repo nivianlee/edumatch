@@ -21,15 +21,18 @@ You will also see any lint errors in the console.
 5. Create more detailed UI
 6. Create UX from one test case to another
 7. Conduct error handling
-8. Housekeepiung
+8. Housekeeping
+9. Deployment to AWS
+10. Update README with AWS's Amplify URL
 
 ## Design Method
 
 - Reusable components to components that are (1) commonly used across other pages (2) requires more UI customisation
 - Follow as closely to UI provided on document
 - Create workflow of UX from one page to another
-- Ensure standardisation e.g. Colors, components, fontsizes, etc.
+- Create standardisation e.g. Colors, components, fontsizes, etc.
 - Errors are displayed visibly
+- Prevention of recursive calling of APIs as APIs would only be triggered when a button is clicked
 - Documentation of test cases below to allow ease of walkthrough of web application
 
 --------------------------------------------------------------------------------------------------------------------------------------
