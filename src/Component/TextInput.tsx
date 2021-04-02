@@ -18,6 +18,7 @@ interface Props {
   autoFocus: boolean;
   multiline: boolean;
   rows: number;
+  helperText: string;
   onChange: (event: any) => void;
 }
 
@@ -30,6 +31,7 @@ const TextInput = (props: Props) => {
     autoFocus,
     multiline,
     rows,
+    helperText,
     onChange,
   } = props;
 
@@ -65,6 +67,7 @@ const TextInput = (props: Props) => {
         autoFocus={autoFocus}
         multiline={multiline}
         rows={rows}
+        helperText={helperText}
         InputProps={{
           endAdornment: icon,
         }}

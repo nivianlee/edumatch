@@ -135,6 +135,7 @@ const Signup = (props: Props) => {
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -147,6 +148,7 @@ const Signup = (props: Props) => {
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -163,6 +165,7 @@ const Signup = (props: Props) => {
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -175,6 +178,7 @@ const Signup = (props: Props) => {
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>

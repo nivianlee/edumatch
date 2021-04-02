@@ -141,6 +141,7 @@ const Login = (props: Props) => {
                           autoFocus={true}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
@@ -153,6 +154,7 @@ const Login = (props: Props) => {
                           autoFocus={false}
                           multiline={false}
                           rows={0}
+                          helperText=""
                           onChange={handleTextInputChange}
                         />
                       </Grid>
