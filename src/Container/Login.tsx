@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { RootState } from "../redux/store";
-import {
-  addUser,
-  deleteUser,
-  addSelectedUser,
-  clearSelectedUser,
-} from "../redux/users/actions";
+import { addUser } from "../redux/users/actions";
 import { Redirect, Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,9 +21,6 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = {
   addUser,
-  deleteUser,
-  addSelectedUser,
-  clearSelectedUser,
 };
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
