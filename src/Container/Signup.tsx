@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { RootState } from "../redux/store";
-import {
-  addUser,
-  deleteUser,
-  addSelectedUser,
-  clearSelectedUser,
-} from "../redux/users/actions";
 import { Redirect, Link } from "react-router-dom";
-
+import { RootState } from "../redux/store";
+import { addUser } from "../redux/users/actions";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import * as ApiManager from "../api/api";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import TextInput from "../Component/TextInput";
+import * as ApiManager from "../api/api";
 import Footer from "../Component/Footer";
 
 const mapStateToProps = (state: RootState) => ({
@@ -25,20 +19,11 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = {
   addUser,
-  deleteUser,
-  addSelectedUser,
-  clearSelectedUser,
 };
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 
 const useStyles = makeStyles((theme) => ({
-  homeTitle: {
-    marginTop: 0,
-    color: "#000",
-    fontSize: 32,
-    fontWeight: "bold",
-  },
   signup1: {
     width: "100%",
   },
@@ -62,10 +47,6 @@ const Signup = (props: Props) => {
     }
   }, [props.user.user]);
 
-  if (isRedirect) {
-    return <Redirect to="/login" />;
-  }
-
   const handleSignup = () => {
     ApiManager.createUser(newUser).then((response: any) => {
       if (response.status === 400) {
@@ -83,6 +64,10 @@ const Signup = (props: Props) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  if (isRedirect) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <Grid
@@ -212,13 +197,9 @@ const Signup = (props: Props) => {
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Grid container direction="row">
-              <Link to="/">
-                <Typography variant="body1">Privacy Policy</Typography>
-              </Link>
-              <Typography variant="body1">and</Typography>
-              <Link to="/">
-                <Typography variant="body1">Terms of Use</Typography>
-              </Link>
+              <Typography variant="body1">
+                Privacy Policy and Terms of Use
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -230,7 +211,6 @@ const Signup = (props: Props) => {
           alt="Illustration"
         />
       </Grid>
-
       <Grid item xs={12} sm={12} md={11} lg={11}>
         <Footer />
       </Grid>
