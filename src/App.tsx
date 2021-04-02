@@ -134,27 +134,25 @@ const App = (props: RouteComponentProps) => {
 
   return (
     <MuiThemeProvider theme={themeLight}>
-      <div className={classes.root}>
-        <main className={classes.content}>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/todos">
-              <TodoList />
-            </Route>
-            <Route exact path="/posts">
-              <Posts />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-          </Switch>
-        </main>
-      </div>
+      <main className={classes.content}>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/todos">
+            <TodoList />
+          </Route>
+          <Route exact path="/posts">
+            <Posts />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+        </Switch>
+      </main>
     </MuiThemeProvider>
   );
 };

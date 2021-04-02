@@ -6,6 +6,7 @@ import {
   DELETE_USER,
   ADD_SELECTED_USER,
   CLEAR_SELECTED_USER,
+  CLEAR_USER,
 } from "./types";
 
 const initialUsersState: UsersState = {
@@ -27,7 +28,7 @@ export function usersReducer(
       };
     case DELETE_USER:
       return {
-        users: state.users.filter((user) => user.email !== action.payload),
+        users: state.users.filter((user) => user !== action.payload),
       };
     default:
       return state;
@@ -39,11 +40,13 @@ export function userReducer(
   action: UserActionTypes
 ): UserState {
   switch (action.type) {
-    case ADD_SELECTED_USER:
+    case ADD_USER:
       return {
         user: action.payload,
       };
     case CLEAR_SELECTED_USER:
+      return initialUserState;
+    case CLEAR_USER:
       return initialUserState;
     default:
       return state;

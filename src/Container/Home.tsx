@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { RootState } from "../redux/store";
 import {
-  addTodo,
-  deleteTodo,
-  addSelectedTodo,
-  clearSelectedTodo,
-} from "../redux/todos/actions";
+  addUser,
+  deleteUser,
+  addSelectedUser,
+  clearSelectedUser,
+  clearUser,
+} from "../redux/users/actions";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,19 +20,25 @@ import keyfeatures from "../data/keyfeatures.json";
 import KeyFeatures from "../Component/KeyFeatures";
 import Radio from "@material-ui/core/Radio";
 import TextInput from "../Component/TextInput";
-import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
+import Checkbox from "@material-ui/core/Checkbox";
 import Footer from "../Component/Footer";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
+
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const mapStateToProps = (state: RootState) => ({
-  todos: state.todos,
-  todo: state.todo,
+  user: state.user,
 });
 
 const mapDispatchToProps = {
-  addTodo,
-  deleteTodo,
-  addSelectedTodo,
-  clearSelectedTodo,
+  addUser,
+  deleteUser,
+  addSelectedUser,
+  clearSelectedUser,
+  clearUser,
 };
 
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
@@ -73,6 +80,68 @@ const Home = (props: Props) => {
     });
   };
 
+  const handleLogout = () => {
+    props.clearUser();
+  };
+
+  const topBarButtons = () => {
+    if (Object.keys(props.user.user).length !== 0) {
+      return (
+        <Grid
+          container
+          direction="row"
+          justify="flex-end"
+          alignItems="center"
+          spacing={2}
+        >
+          <Grid item>
+            <Typography variant="body1">Welcome back!</Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleLogout()}
+            >
+              Logout
+            </Button>
+          </Grid>
+        </Grid>
+      );
+    } else {
+      return (
+        <Grid
+          container
+          direction="row"
+          justify="flex-end"
+          alignItems="center"
+          spacing={2}
+        >
+          <Grid item>
+            <Button
+              variant="outlined"
+              color="primary"
+              to="/login"
+              component={Link}
+            >
+              Log In
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              to="/signup"
+              component={Link}
+            >
+              Sign Up
+            </Button>
+          </Grid>
+        </Grid>
+      );
+    }
+  };
+
   return (
     <Grid container direction="row" spacing={10} justify="center">
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -81,28 +150,7 @@ const Home = (props: Props) => {
             <Typography className={classes.homeTitle}>EduMatch</Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={2} lg={2}>
-            <Grid container direction="row" justify="flex-end" spacing={2}>
-              <Grid item>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  to="/login"
-                  component={Link}
-                >
-                  Log In
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  to="/signup"
-                  component={Link}
-                >
-                  Sign Up
-                </Button>
-              </Grid>
-            </Grid>
+            {topBarButtons()}
           </Grid>
         </Grid>
       </Grid>
@@ -114,15 +162,14 @@ const Home = (props: Props) => {
               <Grid item xs={6} sm={6} md={6} lg={6}>
                 <Grid container direction="column" spacing={4}>
                   <Grid item>
-                    <Typography className={classes.iconText}>
-                      <Box {...defaultProps}>Lorem Ipsum</Box>
-                    </Typography>
+                    <Box {...defaultProps}>Lorem Ipsum</Box>
                   </Grid>
                   <Grid item>
                     <Typography variant="h4">Key Features</Typography>
                   </Grid>
                   {keyfeatures.data.map((data: any, index: number) => (
                     <KeyFeatures
+                      key={index}
                       index={index}
                       title={data.title}
                       description={data.description}
@@ -188,7 +235,7 @@ const Home = (props: Props) => {
                   spacing={2}
                 >
                   <Grid item>
-                    <Typography variant="body1">Department: </Typography>
+                    <Typography variant="body1">Department:</Typography>
                   </Grid>
                   <Grid item>
                     <FormControlLabel

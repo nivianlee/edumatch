@@ -4,6 +4,7 @@ import {
   DELETE_USER,
   ADD_SELECTED_USER,
   CLEAR_SELECTED_USER,
+  CLEAR_USER,
   UserActionTypes,
 } from "./types";
 
@@ -16,10 +17,10 @@ export function addUser(newUser: User): UserActionTypes {
 }
 
 // TypeScript infers that this function is returning DeleteUserAction
-export function deleteUser(email: string): UserActionTypes {
+export function deleteUser(user: User): UserActionTypes {
   return {
     type: DELETE_USER,
-    payload: email,
+    payload: user,
   };
 }
 
@@ -35,5 +36,11 @@ export function addSelectedUser(selectedUser: User): UserActionTypes {
 export function clearSelectedUser(): UserActionTypes {
   return {
     type: CLEAR_SELECTED_USER,
+  };
+}
+
+export function clearUser(): UserActionTypes {
+  return {
+    type: CLEAR_USER,
   };
 }

@@ -25,14 +25,20 @@ export function login(data: any) {
   return axios
     .post(url + "/auth/token/login", data)
     .then(function (response: any) {
-      const config = {
-        headers: { Authorization: `Token ${response.data.auth_token}` },
-      };
-      axios.get(url + "/auth/users/me/", config).then(function (response: any) {
-        return response.data;
-      });
+      return response.data;
     })
     .catch(function (response: any) {
       console.log("here");
+    });
+}
+
+export function loginAuth(token: string) {
+  const config = {
+    headers: { Authorization: `Token ${token}` },
+  };
+  return axios
+    .get(url + "/auth/users/me/", config)
+    .then(function (response: any) {
+      return response.data;
     });
 }
