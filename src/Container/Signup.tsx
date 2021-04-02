@@ -197,13 +197,9 @@ const Signup = (props: Props) => {
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Grid container direction="row">
-              <Link to="/">
-                <Typography variant="body1">Privacy Policy</Typography>
-              </Link>
-              <Typography variant="body1">and</Typography>
-              <Link to="/">
-                <Typography variant="body1">Terms of Use</Typography>
-              </Link>
+              <Typography variant="body1">
+                Privacy Policy and Terms of Use
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
