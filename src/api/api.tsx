@@ -16,9 +16,14 @@ export function getPosts() {
 }
 
 export function createUser(data: any) {
-  return axios.post(url + "/auth/users/", data).then(function (response: any) {
-    return response;
-  });
+  return axios
+    .post(url + "/auth/users/", data)
+    .then(function (response: any) {
+      return response;
+    })
+    .catch((error) => {
+      return error.response;
+    });
 }
 
 export function login(data: any) {
