@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -12,10 +12,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#166FFD",
     fontSize: 20,
     fontWeight: "bold",
-  },
-  iconText: {
-    background: "#166FFD",
-    width: 100,
   },
 }));
 
