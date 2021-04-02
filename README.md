@@ -12,33 +12,39 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+### Test Case
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 1. Sign Up
 
-### `npm run build`
+At the Home page, click on the Sign Up button on the top right of the screen.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img width="1428" alt="1" src="https://user-images.githubusercontent.com/34975891/113423041-5dd3bb00-9400-11eb-9c84-cc38d8fe8fba.png">
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+You will be redirected to the Sign Up page. Enter your particulars.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+If an email were to be used previously to create an account, an error would be shown.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If there were an incorrect email format detected, an error would be shown.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If there are no longer any errors, you will be redirected to the Login page.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 2. Login
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+On the login page, enter your login credentials.
+
+
+If incorrect login credentials were inputted, an error would be shown.
+
+If there are no longer any errors, you will be redirected to the Home page.
+
+
+#### 3. Logout
+
+At the Home page, click on the Logout button to logout of your account.
+
+
+The home page would now show the Login and Sign Up buttons.
