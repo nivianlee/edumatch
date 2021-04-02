@@ -1,14 +1,8 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import LockIcon from "@material-ui/icons/Lock";
-
-interface LoginUser {
-  email: string;
-  password: string;
-}
 
 interface Props {
   type: string;
