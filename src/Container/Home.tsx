@@ -22,6 +22,12 @@ import Radio from "@material-ui/core/Radio";
 import TextInput from "../Component/TextInput";
 import Checkbox from "@material-ui/core/Checkbox";
 import Footer from "../Component/Footer";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
+
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user,
@@ -66,7 +72,6 @@ const Home = (props: Props) => {
     contactEmail: "",
     message: "",
   });
-  const [isLogout, setIsLogout] = useState(false);
 
   const handleTextInputChange = (event: any) => {
     setFeedbackForm({
@@ -75,14 +80,9 @@ const Home = (props: Props) => {
     });
   };
 
-  if (isLogout) {
+  const handleLogout = () => {
     props.clearUser();
-    setIsLogout(!isLogout);
-  }
-
-  useEffect(() => {
-    console.log(props.user.user);
-  }, []);
+  };
 
   const topBarButtons = () => {
     if (Object.keys(props.user.user).length !== 0) {
@@ -101,7 +101,7 @@ const Home = (props: Props) => {
             <Button
               variant="outlined"
               color="primary"
-              onClick={() => setIsLogout(!isLogout)}
+              onClick={() => handleLogout()}
             >
               Logout
             </Button>

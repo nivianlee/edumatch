@@ -40,7 +40,7 @@ export function userReducer(
   action: UserActionTypes
 ): UserState {
   switch (action.type) {
-    case ADD_SELECTED_USER:
+    case ADD_USER:
       return {
         user: action.payload,
       };

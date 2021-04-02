@@ -62,16 +62,13 @@ const Login = (props: Props) => {
   const handleLogin = () => {
     ApiManager.login(loginDetails)
       .then((response: any) => {
-        props.addUser(response);
-        handleRedirect();
+        ApiManager.loginAuth(response.auth_token).then((response: any) => {
+          props.addUser(response);
+        });
       })
       .catch((err: any) => {
         console.log(err);
       });
-  };
-
-  const handleRedirect = () => {
-    setIsRedirect(true);
   };
 
   if (isRedirect) {
